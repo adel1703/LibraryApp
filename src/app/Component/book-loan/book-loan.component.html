@@ -1,0 +1,60 @@
+<div class="book-loan-form-container">
+    <div *ngIf="errorMessage" class="error-message">
+      {{ errorMessage }}
+    </div>
+  
+    <h2>Book Loans</h2>
+    <form (ngSubmit)="addOrUpdateBookLoan()" class="book-loan-form">
+        <div class="form-group">
+            <label for="studentId">Student:</label>
+            <select id="studentId" [(ngModel)]="newBookLoan.studentId" name="studentId" (change)="onStudentChange($event)" required>
+              <option *ngFor="let student of students" [value]="student.id">{{ student.name }} (Age: {{ student.age }})</option>
+            </select>
+          </div>
+  
+          <div class="form-group">
+            <label for="bookId">Book:</label>
+            <select id="bookId" [(ngModel)]="newBookLoan.bookId" name="bookId" (change)="onBookChange($event)" required>
+              <option *ngFor="let book of filteredBooks.length ? filteredBooks : books" [value]="book.id">{{ book.title }} (Age: {{ book.minAge }} - {{ book.maxAge }})</option>
+            </select>
+          </div>
+  
+      <div class="form-group">
+        <label for="borrowedAt">Borrowed At:</label>
+        <input type="date" id="borrowedAt" [(ngModel)]="newBookLoan.borrowedAt" name="borrowedAt" required />
+      </div>
+      <div class="form-group">
+        <label for="returnedAt">Returned At:</label>
+        <input type="date" id="returnedAt" [(ngModel)]="newBookLoan.returnedAt" name="returnedAt" required />
+      </div>
+  
+      <button type="submit" class="submit-button">{{ isEditMode ? 'Update' : 'Add' }} Book Loan</button>
+    </form>
+  
+    <table class="book-loan-list">
+      <thead>
+        <tr>
+          <th>Book</th>
+          <th>Student</th>
+          <th>Borrowed At</th>
+          <th>Returned At</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let loan of bookLoans" [class.hidden]="loan.hide">
+          <td>{{ loan.bookTitle }}</td>
+          <td>{{ loan.studentName }}</td>
+          <td>{{ loan.borrowedAt | date:'yyyy-MM-dd' }}</td>
+          <td>{{ loan.returnedAt ? (loan.returnedAt | date:'yyyy-MM-dd') : 'Pending Return' }}</td>
+          
+          <td>
+            <button *ngIf="!loan.returnedAt" (click)="returnBook(loan)" class="return-button">Return</button>
+            <button (click)="editBookLoan(loan)" class="update-button">Update</button>
+            <button (click)="deleteBookLoan(loan.id)" class="delete-button">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
