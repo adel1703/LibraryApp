@@ -1,0 +1,163 @@
+/* Overall container for the book loan form */
+.book-loan-form-container {
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+/* Error message styling */
+.error-message {
+  color: red;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+/* Title styling */
+h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* Form styling */
+.book-loan-form {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.form-group {
+  width: 48%;
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.form-group select {
+  width: 100%;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+
+.submit-button {
+  width: 100%;
+  padding: 10px 15px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+/* Book loan list styling */
+.book-loan-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.book-loan-item {
+  margin-bottom: 15px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+}
+
+.hidden {
+  display: none;
+}
+
+.loan-details {
+  margin-bottom: 5px;
+}
+
+.button-group {
+  display: flex;
+}
+
+.button-group button {
+  padding: 5px 10px;
+  margin-right: 5px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.return-button {
+  background-color: #2196F3;
+  color: white;
+}
+
+.update-button {
+  background-color: #FF9800;
+  color: white;
+}
+
+.delete-button {
+  background-color: #F44336;
+  color: white;
+}
+table.book-loan-list {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  padding: 10px;
+  border: 1px solid #ddd;
+}
+
+th {
+  text-align: left;
+  font-weight: bold;
+}
+
+.button-group {
+  display: flex;
+}
+
+.button-group button {
+  padding: 5px 10px;
+  margin-right: 5px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.return-button {
+  background-color: #2196F3;
+  color: white;
+  padding: 5px 10px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  cursor: pointer;
+  margin: 3px;
+}
+
+.update-button {
+  background-color: #FF9800;
+  color: white;
+  padding: 5px 10px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  cursor: pointer;
+  margin: 3px;
+}
+
+.delete-button {
+  background-color: #F44336;
+  color: white;
+  padding: 5px 10px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  cursor: pointer;
+  margin: 3px;
+}
+

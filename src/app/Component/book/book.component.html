@@ -1,0 +1,59 @@
+<div class="Book-container">
+  
+
+  <h2 *ngIf="editing">Edit Book</h2>
+  <h2 *ngIf="!editing">Add New Book</h2>
+
+  <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
+
+  <form (ngSubmit)="editing ? updateBooks() : addBooks()">
+    <div *ngIf="editing">
+      <label>Title:</label>
+      <input [(ngModel)]="selectedBook.title" name="selectedtitle" required>
+    </div>
+    <div *ngIf="!editing">
+      <label>Title:</label>
+      <input [(ngModel)]="newBook.title" name="newtitle" required>
+    </div>
+    <div *ngIf="editing">
+      <label>Min Age:</label>
+      <input type="number" [(ngModel)]="selectedBook.minAge" name="selectedminAge" required>
+    </div>
+    <div *ngIf="!editing">
+      <label>Min Age:</label>
+      <input type="number" [(ngModel)]="newBook.minAge" name="newminAge" required>
+    </div>
+    <div *ngIf="editing">
+      <label>Max Age:</label>
+      <input type="number" [(ngModel)]="selectedBook.maxAge" name="selectedmaxAge" required>
+    </div>
+    <div *ngIf="!editing">
+      <label>Max Age:</label>
+      <input type="number" [(ngModel)]="newBook.maxAge" name="newmaxAge" required>
+    </div>
+    <button type="submit">{{ editing ? 'Update' : 'Add' }} Book</button>
+  </form>
+  <h2>Book List</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Min Age</th>
+        <th>Max Age</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let Book of Books">
+        <td>{{ Book.title }}</td>
+        <td>{{ Book.minAge }}</td>
+        <td>{{ Book.maxAge }}</td>
+        <td>
+          <button class="update-button" (click)="selectBooks(Book)">Edit</button>
+          <button class="delete-button" (click)="deleteBooks(Book.id)">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  
+</div>

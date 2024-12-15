@@ -1,0 +1,54 @@
+<div class="Book-container">
+    <h2 *ngIf="editing">Edit Student</h2>
+    <h2 *ngIf="!editing">Add New Student</h2>
+  
+    <form (ngSubmit)="editing ? updateStudent() : addStudent()">
+      <div *ngIf="editing">
+        <label>Name:</label>
+        <input [(ngModel)]="selectedStudent.name" name="selectedname" required>
+      </div>
+      <div *ngIf="!editing">
+        <label>Name:</label>
+        <input [(ngModel)]="newStudent.name" name="name" required>
+      </div>
+  
+      <div *ngIf="editing">
+        <label>Date of Birth:</label>
+        <input type="date" [(ngModel)]="selectedStudent.dayOfBirth" name="dayOfBirth" required>
+      </div>
+      <div *ngIf="!editing">
+        <label>Date of Birth:</label>
+        <input type="date" [(ngModel)]="newStudent.dayOfBirth" name="dayOfBirth" required>
+      </div>
+  
+      <button type="submit">{{ editing ? 'Update' : 'Add' }} Student</button>
+    </form>
+  
+    <div *ngIf="errorMessage" class="error-message">
+      {{ errorMessage }}
+    </div>
+  
+    <h2>Student List</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Age</th>
+          <th>Date of Birth</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let student of students">
+          <td>{{ student.name }}</td>
+          <td>{{ student.age }}</td>
+          <td>{{ student.dayOfBirth | date:'d/M/yyyy' }}</td>
+          <td>
+            <button class="update-button" (click)="selectStudent(student)">Edit</button>
+            <button class="delete-button" (click)="deleteStudent(student.id)">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
